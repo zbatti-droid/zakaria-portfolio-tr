@@ -1,0 +1,6 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://zakaria-portfolio-jy5g.vercel.app/sitemap.xml 

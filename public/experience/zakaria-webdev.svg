@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<rect width="128" height="128" rx="64" fill="#111827"/>
+<circle cx="64" cy="64" r="57" fill="none" stroke="#22d3ee" stroke-width="3"/>
+<path d="M28 39h72" stroke="#22d3ee" stroke-width="2" opacity=".8"/>
+<text x="64" y="72" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="800" fill="#fff">ZW</text>
+<text x="64" y="91" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="2" fill="#67e8f9">WEB DEV</text>
+</svg>
