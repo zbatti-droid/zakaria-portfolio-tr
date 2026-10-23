@@ -26,7 +26,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             src={project.companyLogoImg}
             alt={`${project.companyName} preview`}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px"
+           sizes="(max-width: 639px) calc(100vw - 80px), (max-width: 1024px) 42vw, 420px"
           />
         </Link>
         <div className="absolute right-2 top-2 z-10 flex flex-wrap justify-end gap-1.5">

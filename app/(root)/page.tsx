@@ -78,21 +78,21 @@ export default function IndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
 
-      <section className="mb-0 flex items-center space-y-6 pb-12 pt-8 md:py-16 lg:py-24">
-        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+      <section className="mb-0 flex items-center pb-8 pt-6 md:py-16 lg:py-24">
+        <div className="container flex w-full max-w-[64rem] flex-col items-center gap-3 px-4 text-center sm:gap-4">
           <Image
             src={profileImg}
             height={100}
             width={100}
             sizes="100vw"
-            className="mb-1 h-36 w-36 rounded-full border-4 border-primary bg-primary object-cover object-center shadow-md sm:h-44 sm:w-44 md:mb-2 md:h-52 md:w-52"
+            className="mb-0 h-32 w-32 rounded-full border-4 border-primary bg-primary object-cover object-center shadow-md sm:h-44 sm:w-44 md:mb-2 md:h-52 md:w-52"
             alt="Zakaria Batti - Full-Stack Developer Portfolio"
             priority
           />
           <AnimatedText
             as="h1"
             delay={0.2}
-            className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
+            className="font-heading text-3xl leading-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
             Zakaria Batti
           </AnimatedText>
@@ -103,25 +103,25 @@ export default function IndexPage() {
           >
             Full-Stack Developer
           </AnimatedText>
-          <div className="mt-4 max-w-[42rem] text-center">
-            <p className="leading-normal text-muted-foreground text-sm sm:text-base">
+          <div className="w-full max-w-[42rem] px-2 text-center sm:px-0">
+            <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
               I design and build reliable web applications from frontend interfaces to backend APIs, databases and deployment. My main stack includes React, Next.js, Node.js, PostgreSQL, Supabase and blockchain technologies.
             </p>
           </div>
 
-          <div className="flex flex-col mt-10 items-center justify-center sm:flex-row sm:space-x-4 gap-3">
-            <AnimatedText delay={0.6}>
-              <Link href="#projects" className={cn(buttonVariants({ size: "lg" }))} aria-label="View projects">
+          <div className="flex w-full flex-col items-center justify-center gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-0 sm:space-x-4">
+            <AnimatedText delay={0.6} className="w-full max-w-xs sm:w-auto">
+              <Link href="#projects" className={cn(buttonVariants({ size: "lg" }), "w-full justify-center sm:w-auto")} aria-label="View projects">
                 <Icons.chevronDown className="w-4 h-4 mr-2" /> View Projects
               </Link>
             </AnimatedText>
-            <AnimatedText delay={0.7}>
-              <a href="/CV_Zakaria_Batti_EN.pdf" download className={cn(buttonVariants({ variant: "outline", size: "lg" }))} aria-label="Download Zakaria Batti CV">
+            <AnimatedText delay={0.7} className="w-full max-w-xs sm:w-auto">
+              <a href="/CV_Zakaria_Batti_EN.pdf" download className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full justify-center sm:w-auto")} aria-label="Download Zakaria Batti CV">
                 <Icons.post className="w-4 h-4 mr-2" /> Download CV
               </a>
             </AnimatedText>
-            <AnimatedText delay={0.8}>
-              <Link href="/contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }))} aria-label="Contact Zakaria Batti">
+            <AnimatedText delay={0.8} className="w-full max-w-xs sm:w-auto">
+              <Link href="/contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full justify-center sm:w-auto")} aria-label="Contact Zakaria Batti">
                 <Icons.contact className="w-4 h-4 mr-2" /> Contact Me
               </Link>
             </AnimatedText>
@@ -129,13 +129,13 @@ export default function IndexPage() {
           <p className="mt-5 text-sm text-muted-foreground">Available for full-time, remote and freelance opportunities.</p>
           <p className="text-sm text-muted-foreground">Featured build: <Link href="/projects/dar-sidi-bibi" className="font-medium text-foreground underline underline-offset-4">Dar Sidi Bibi</Link>, a complete bilingual restaurant platform.</p>
           <AnimatedText delay={1.2}>
-            <Icons.chevronDown className="h-6 w-6 mt-10" />
+            <Icons.chevronDown className="mt-6 h-6 w-6 sm:mt-10" />
           </AnimatedText>
         </div>
       </section>
       <AnimatedSection
         direction="up"
-        className="container space-y-6 py-10 my-10"
+        className="container my-6 space-y-6 py-8 sm:my-10 sm:py-10"
         id="experience"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-3 text-center">
@@ -148,7 +148,7 @@ export default function IndexPage() {
           <AnimatedText
             as="p"
             delay={0.2}
-            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+            className="w-full max-w-[42rem] px-2 leading-relaxed text-muted-foreground sm:px-0 sm:text-lg sm:leading-7"
           >
             Practical full-stack development across client work, independent products and my DiploChain final-year project.
           </AnimatedText>
@@ -165,7 +165,7 @@ export default function IndexPage() {
       </AnimatedSection>
       <AnimatedSection
         direction="up"
-        className="container space-y-6 py-10 my-10"
+        className="container my-6 space-y-6 py-8 sm:my-10 sm:py-10"
         id="education"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-3 text-center">
@@ -178,7 +178,7 @@ export default function IndexPage() {
           <AnimatedText
             as="p"
             delay={0.2}
-            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+            className="w-full max-w-[42rem] px-2 leading-relaxed text-muted-foreground sm:px-0 sm:text-lg sm:leading-7"
           >
             My academic background in software engineering, computer science and scientific studies.
           </AnimatedText>
@@ -187,7 +187,7 @@ export default function IndexPage() {
       </AnimatedSection>
       <AnimatedSection
         direction="up"
-        className="container space-y-6 bg-muted/50 rounded-2xl py-10 my-10"
+        className="container my-6 space-y-6 rounded-2xl bg-muted/50 py-8 sm:my-10 sm:py-10"
         id="skills"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-3 text-center">
@@ -200,7 +200,7 @@ export default function IndexPage() {
           <AnimatedText
             as="p"
             delay={0.2}
-            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+            className="w-full max-w-[42rem] px-2 leading-relaxed text-muted-foreground sm:px-0 sm:text-lg sm:leading-7"
           >
             A practical toolkit for building responsive interfaces, secure APIs, database-backed products and Web3 applications.
           </AnimatedText>
@@ -217,7 +217,7 @@ export default function IndexPage() {
       </AnimatedSection>
       <AnimatedSection
         direction="up"
-        className="container space-y-6 bg-muted py-10 my-14"
+        className="container my-8 space-y-6 bg-muted py-8 sm:my-14 sm:py-10"
         id="projects"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
@@ -230,7 +230,7 @@ export default function IndexPage() {
           <AnimatedText
             as="p"
             delay={0.2}
-            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+            className="w-full max-w-[42rem] px-2 leading-relaxed text-muted-foreground sm:px-0 sm:text-lg sm:leading-7"
           >
             {pagesConfig.projects.description}
           </AnimatedText>
@@ -259,7 +259,7 @@ export default function IndexPage() {
       </AnimatedSection>
       <AnimatedSection
         direction="up"
-        className="container space-y-6 bg-muted py-10 my-14"
+        className="container my-8 space-y-6 bg-muted py-8 sm:my-14 sm:py-10"
         id="contributions"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
@@ -272,7 +272,7 @@ export default function IndexPage() {
           <AnimatedText
             as="p"
             delay={0.2}
-            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+            className="w-full max-w-[42rem] px-2 leading-relaxed text-muted-foreground sm:px-0 sm:text-lg sm:leading-7"
           >
             {pagesConfig.contributions.description}
           </AnimatedText>
@@ -288,7 +288,7 @@ export default function IndexPage() {
       </AnimatedSection>
       <AnimatedSection
         direction="up"
-        className="container space-y-6 py-10 my-14"
+        className="container my-8 space-y-6 py-8 sm:my-14 sm:py-10"
         id="blogs"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
@@ -301,7 +301,7 @@ export default function IndexPage() {
           <AnimatedText
             as="p"
             delay={0.2}
-            className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"
+            className="w-full max-w-[42rem] px-2 leading-relaxed text-muted-foreground sm:px-0 sm:text-lg sm:leading-7"
           >
             {pagesConfig.blogs.description}
           </AnimatedText>
