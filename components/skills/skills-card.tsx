@@ -13,7 +13,7 @@ export default function SkillsCard({ skills }: SkillsCardProps) {
           key={id}
           className="relative overflow-hidden rounded-lg border bg-background p-2"
         >
-          <div className="flex h-[230px] flex-col justify-between rounded-md p-6 sm:h-[230px]">
+          <div className="flex min-h-[230px] flex-col justify-between gap-6 rounded-md p-4 sm:p-6">
             <skill.icon size={50} />
             <div className="space-y-2">
               <h3 className="font-bold">{skill.name}</h3>

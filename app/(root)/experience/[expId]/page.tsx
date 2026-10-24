@@ -137,7 +137,7 @@ export default async function ExperienceDetailPage({
 
   return (
     <ClientPageWrapper>
-      <div className="container max-w-4xl mx-auto py-8 px-4">
+      <div className="container mx-auto min-w-0 max-w-4xl py-6 sm:py-8">
         <AnimatedSection className="mb-6">
           <Button variant="ghost" size="sm" className="mb-4" asChild>
             <Link href="/experience">
@@ -160,7 +160,8 @@ export default async function ExperienceDetailPage({
                           alt={experience.company}
                           width={80}
                           height={80}
-                          className="w-full h-full object-contain p-2"
+                          sizes="(max-width: 639px) 64px, 80px"
+                          className="h-full w-full object-contain p-2"
                         />
                       </div>
                     )}
@@ -177,6 +178,7 @@ export default async function ExperienceDetailPage({
                             href={experience.companyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Visit ${experience.company} website`}
                             className="text-muted-foreground hover:text-foreground transition-colors"
                           >
                             <Icons.externalLink className="w-4 h-4" />

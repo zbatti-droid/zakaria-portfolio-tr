@@ -14,14 +14,15 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
           <CustomTooltip icon={item.icon} text={item.username} key={ind}>
             <Link
               href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={item.name === "Email" ? undefined : "_blank"}
+              rel={item.name === "Email" ? undefined : "noopener noreferrer"}
+              aria-label={item.name === "Email" ? "Email Zakaria Batti" : `Open Zakaria Batti on ${item.name}`}
               className={cn(
                 buttonVariants({
                   variant: "ghost",
                   size: "sm",
                 }),
-                "h-10 w-10 p-2"
+                "h-11 w-11 p-2"
               )}
             >
               <item.icon className="h-5 w-5" />

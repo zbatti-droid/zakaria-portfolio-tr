@@ -17,6 +17,7 @@ export default function EducationList() {
               alt={`${item.institution} logo`}
               width={56}
               height={56}
+              sizes="(max-width: 639px) 48px, 56px"
               className="h-full w-full object-contain"
             />
           </div>

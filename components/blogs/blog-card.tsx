@@ -25,11 +25,12 @@ export default function BlogCard({ blog }: BlogCardProps) {
       <article className="flex flex-col h-full">
         {/* Cover image */}
         {blog.coverImage && (
-          <div className="relative w-full h-[180px] flex-shrink-0 overflow-hidden bg-muted">
+          <div className="relative h-[180px] w-full min-w-0 flex-shrink-0 overflow-hidden bg-muted">
             <Image
               src={blog.coverImage}
               alt={blog.title}
               fill
+              sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc((100vw - 4.25rem) / 2), (max-width: 1399px) calc((100vw - 6.5rem) / 3), 440px"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
@@ -37,7 +38,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
         )}
 
         {/* Content */}
-        <div className="p-5 flex flex-col flex-grow gap-3">
+        <div className="flex min-w-0 flex-grow flex-col gap-3 p-4 sm:p-5">
           {/* Tags */}
           <div className="flex flex-wrap gap-1.5" aria-label="Tags">
             {blog.tags.slice(0, 3).map((tag) => (
@@ -56,7 +57,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors duration-200">
+          <h3 className="line-clamp-2 break-words text-lg font-bold leading-snug text-foreground transition-colors duration-200 group-hover:text-primary">
             {blog.title}
           </h3>
 

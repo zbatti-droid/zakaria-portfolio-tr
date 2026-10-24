@@ -6,15 +6,17 @@ interface PageHeaderProps {
 export default function PageHeader({ title, description }: PageHeaderProps) {
   return (
     <>
-      <div className="flex flex-col mt-5 items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl capitalize ">
+      <header className="mt-5 flex min-w-0 flex-col items-start gap-3 sm:gap-4 md:flex-row md:justify-between md:gap-8">
+        <div className="min-w-0 flex-1 space-y-3 sm:space-y-4">
+          <h1 className="break-words font-heading text-3xl leading-tight tracking-tight capitalize sm:text-4xl lg:text-5xl">
             {title}
           </h1>
-          <p className="text-lg text-muted-foreground">{description}</p>
+          <p className="max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {description}
+          </p>
         </div>
-      </div>
-      <hr className="my-6" />
+      </header>
+      <hr className="my-5 sm:my-6" />
     </>
   );
 }

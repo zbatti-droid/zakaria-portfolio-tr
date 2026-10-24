@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ReactNode, useRef } from "react";
 
 interface ScrollAnimationProps {
@@ -15,6 +15,7 @@ export const ScrollAnimation = ({
   effect = "fade",
 }: ScrollAnimationProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -43,7 +44,11 @@ export const ScrollAnimation = ({
   })();
 
   return (
-    <motion.div ref={ref} className={className} style={animationStyle}>
+    <motion.div
+      ref={ref}
+      className={className}
+      style={shouldReduceMotion ? { opacity: 1, x: 0, scale: 1, rotate: 0 } : animationStyle}
+    >
       {children}
     </motion.div>
   );

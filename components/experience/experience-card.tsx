@@ -39,7 +39,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
               alt={experience.company}
               width={48}
               height={48}
-              className="w-full h-full object-contain p-2"
+              sizes="(max-width: 639px) 40px, 48px"
+              className="h-full w-full object-contain p-2"
             />
           </div>
         )}
@@ -54,6 +55,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
                   href={experience.companyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Visit ${experience.company} website`}
                   className="text-muted-foreground hover:text-foreground transition-colors flex-shrink-0 mt-0.5 sm:mt-0"
                 >
                   <Icons.externalLink className="w-4 h-4" />

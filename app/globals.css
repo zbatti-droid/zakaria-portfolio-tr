@@ -255,11 +255,6 @@
     @apply border-border;
   }
 
-  html,
-  body {
-    overflow-x: hidden;
-  }
-
   body {
     @apply bg-background text-foreground;
     font-feature-settings:
@@ -615,11 +610,14 @@
 
 /* Tables */
 .blog-content table {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.9rem;
-  overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid hsl(var(--border));
 }
@@ -667,26 +665,17 @@
   display: block;
 }
 
-@keyframes portfolio-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: portfolio-fade-up 600ms ease-out both;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-up {
-    animation: none !important;
-    opacity: 1;
-    transform: none;
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

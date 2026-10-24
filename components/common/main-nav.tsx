@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import * as React from "react";
@@ -34,17 +34,28 @@ export function MainNav({ items, children }: MainNavProps) {
   const segment = useSelectedLayoutSegment();
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
+  const mobileMenuButtonRef = React.useRef<HTMLButtonElement>(null);
+  const wasMobileMenuOpen = React.useRef(false);
+  const closeMobileMenu = React.useCallback(() => setShowMobileMenu(false), []);
 
   React.useEffect(() => {
     setShowMobileMenu(false);
   }, [pathname]);
 
+  React.useEffect(() => {
+    if (wasMobileMenuOpen.current && !showMobileMenu) {
+      mobileMenuButtonRef.current?.focus();
+    }
+    wasMobileMenuOpen.current = showMobileMenu;
+  }, [showMobileMenu]);
+
   return (
     <div className="flex gap-6 md:gap-10">
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.9 }}
+        animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.5 }}
       >
         <Link href="/" className="hidden items-center space-x-2 md:flex">
           <span className={cn("font-heading text-2xl")}>
@@ -58,11 +69,11 @@ export function MainNav({ items, children }: MainNavProps) {
             <motion.div
               key={index}
               custom={index}
-              initial="hidden"
-              animate="visible"
+              initial={shouldReduceMotion ? false : "hidden"}
+              animate={shouldReduceMotion ? undefined : "visible"}
               variants={navItemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
             >
               <Link
                 href={item.disabled ? "#" : item.href}
@@ -81,16 +92,21 @@ export function MainNav({ items, children }: MainNavProps) {
         </nav>
       ) : null}
       <motion.button
-        className="flex items-center space-x-2 md:hidden"
+        ref={mobileMenuButtonRef}
+        type="button"
+        className="flex min-h-11 items-center gap-2 rounded-md px-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        aria-label={showMobileMenu ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={showMobileMenu}
+        aria-controls="mobile-navigation"
+        whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+        whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
       >
         {showMobileMenu ? <Icons.close /> : <Icons.menu />}
         <span className="font-bold">Menu</span>
       </motion.button>
       {showMobileMenu && items && (
-        <MobileNav items={items}>{children}</MobileNav>
+        <MobileNav items={items} onClose={closeMobileMenu}>{children}</MobileNav>
       )}
     </div>
   );

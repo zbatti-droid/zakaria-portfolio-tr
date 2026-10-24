@@ -271,9 +271,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <Image
                 src={post.coverImage}
                 alt={post.title}
-                width={768}
-                height={400}
-                className="w-full h-auto rounded-lg border border-border object-cover"
+                width={post.coverImage === "/blogs/niya-fastpi.png" ? 2320 : 768}
+                height={post.coverImage === "/blogs/niya-fastpi.png" ? 836 : 400}
+                sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 767px) calc(100vw - 3rem), 720px"
+                className="block h-auto w-full rounded-lg border border-border object-contain"
                 priority
               />
             </figure>

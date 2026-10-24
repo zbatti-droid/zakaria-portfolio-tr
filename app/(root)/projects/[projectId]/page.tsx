@@ -12,6 +12,23 @@ import { siteConfig } from "@/config/site";
 import { cn, formatDateFromObj } from "@/lib/utils";
 import profileImg from "@/public/images/profile.jpg";
 
+// Keep the declared image dimensions aligned with the actual local assets.
+// Some project pages are full-page portrait captures rather than 16:9 previews.
+const screenshotDimensions: Record<string, { width: number; height: number }> = {
+  "/diplochain.png": { width: 1672, height: 941 },
+  "/diplochain-alt.png": { width: 1672, height: 941 },
+  "/dar-sidi-bibi.png": { width: 414, height: 2047 },
+  "/style-na.png": { width: 274, height: 2048 },
+  "/bella-beaute.png": { width: 306, height: 2047 },
+  "/coffee-website.png": { width: 525, height: 2048 },
+  "/previews/employee-management.svg": { width: 1200, height: 675 },
+  "/previews/dar-sidi-bibi.jpg": { width: 1200, height: 675 },
+  "/previews/style-na.jpg": { width: 1200, height: 675 },
+  "/previews/bella-beaute.jpg": { width: 1200, height: 675 },
+  "/previews/boutique-robes.jpg": { width: 1200, height: 675 },
+  "/previews/coffee-website.jpg": { width: 1200, height: 675 },
+};
+
 interface ProjectPageProps {
   params: Promise<{
     projectId: string;
@@ -110,6 +127,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               alt="Zakaria Batti"
               width={42}
               height={42}
+              sizes="42px"
               className="rounded-full border border-border bg-background"
             />
             <span className="leading-tight">
@@ -123,9 +141,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Image
         src={project.companyLogoImg}
         alt={`${project.companyName} project preview`}
-        width={1200}
-        height={675}
-        className="my-8 aspect-video h-auto w-full rounded-xl border border-border bg-muted object-cover"
+        width={screenshotDimensions[project.companyLogoImg]?.width ?? 1200}
+        height={screenshotDimensions[project.companyLogoImg]?.height ?? 675}
+        sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) min(calc(100vw - 3rem), 720px), 704px"
+        className="my-8 block h-auto w-full rounded-xl border border-border bg-muted object-contain"
         priority
       />
 
@@ -153,16 +172,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </h3>
               {page.description && <p className="text-muted-foreground">{page.description}</p>}
               <div className="mt-4 space-y-4">
-                {page.imgArr.map((img) => (
-                  <Image
-                    src={img}
-                    key={img}
-                    alt={`${project.companyName} screenshot`}
-                    width={1200}
-                    height={675}
-                    className="h-auto w-full rounded-lg border border-border"
-                  />
-                ))}
+                {page.imgArr.map((img) => {
+                  const dimensions = screenshotDimensions[img] ?? { width: 1200, height: 675 };
+                  const isPortraitScreenshot = dimensions.height > dimensions.width;
+                  const imageSizes = isPortraitScreenshot
+                    ? `(max-width: 639px) min(calc(100vw - 2rem), ${dimensions.width}px), ${dimensions.width}px`
+                    : "(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) min(calc(100vw - 3rem), 720px), 704px";
+
+                  return (
+                    <Image
+                      src={img}
+                      key={img}
+                      alt={`${project.companyName} screenshot`}
+                      width={dimensions.width}
+                      height={dimensions.height}
+                      sizes={imageSizes}
+                      style={isPortraitScreenshot ? { maxWidth: `${dimensions.width}px` } : undefined}
+                      className="mx-auto block h-auto w-full rounded-lg border border-border object-contain"
+                    />
+                  );
+                })}
               </div>
             </div>
           ))}

@@ -40,6 +40,7 @@ export default function Timeline({ experiences }: TimelineProps) {
                 alt={`${experience.company} logo`}
                 width={56}
                 height={56}
+                sizes="(max-width: 639px) 48px, 56px"
                 className="h-full w-full object-contain"
               />
             </div>

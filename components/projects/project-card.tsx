@@ -26,7 +26,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             src={project.companyLogoImg}
             alt={`${project.companyName} preview`}
             fill
-           sizes="(max-width: 639px) calc(100vw - 80px), (max-width: 1024px) 42vw, 420px"
+            sizes="(max-width: 639px) calc(100vw - 3.75rem), (max-width: 1023px) calc((100vw - 7.5rem) / 2), (max-width: 1215px) calc((100vw - 11.25rem) / 3), 360px"
           />
         </Link>
         <div className="absolute right-2 top-2 z-10 flex flex-wrap justify-end gap-1.5">
@@ -36,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Visit the live ${project.companyName} website`}
-              className="inline-flex items-center gap-1 rounded-full bg-black/85 px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-sm transition-colors hover:bg-black"
+              className="inline-flex min-h-9 items-center gap-1 rounded-full bg-black/85 px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-sm transition-colors hover:bg-black"
             >
               <Icons.externalLink className="h-3 w-3" />
               Live Site
@@ -48,7 +48,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Open source code for ${project.companyName}`}
-              className="inline-flex items-center gap-1 rounded-full bg-black/85 px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-sm transition-colors hover:bg-black"
+              className="inline-flex min-h-9 items-center gap-1 rounded-full bg-black/85 px-2.5 py-1.5 text-[11px] font-semibold text-white shadow-sm transition-colors hover:bg-black"
             >
               <Icons.gitHub className="h-3 w-3" />
               GitHub
